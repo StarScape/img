@@ -1,0 +1,247 @@
+//$accent_blue: #3b3bb5;
+$accent_blue: #2c92b9;
+$primary: #404040;
+$secondary: #252525;
+
+// Shadow applied to all windows
+@mixin standard_shadow($left: 3px, $top: 3px) {
+  box-shadow: $left $top 0px rgba($secondary, 0.5);
+}
+
+body {
+  background-color: #dddddd;
+  user-select: none;
+}
+
+#vue-app {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+$bar_padding_hor: 0px;
+$bar_padding_vert: 3px;
+
+#menu-bar {
+  background-color: $primary;
+  padding-right: $bar_padding_hor;  
+  padding-left: $bar_padding_hor;
+
+  padding-bottom: $bar_padding_vert;
+  padding-top: $bar_padding_vert;
+
+  @include standard_shadow(0px);
+
+  $bar_word_spacing: 20px;
+
+  a {
+    color: #e6e6e6;
+    font-family: lato, sans-serif;
+  
+    padding-right: $bar_word_spacing;
+    padding-left: $bar_word_spacing;
+    padding-bottom: $bar_padding_vert;
+    padding-top: $bar_padding_vert;
+    height: 100%;
+  }
+
+  a:hover {
+    cursor: pointer;
+    background-color: $secondary;
+    color: $accent_blue;
+  }
+}
+
+$blur_amount: 50px;
+
+#background-layer1 {
+  position: fixed;
+  // background-color: red;
+  width: 100%;
+  height: 97%;
+  z-index: -2;
+
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#444a7b+0,448172+100 */
+  background: #444a7b; /* Old browsers */
+  background: -moz-linear-gradient(45deg,  #444a7b 0%, #448172 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(45deg,  #444a7b 0%,#448172 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(45deg,  #444a7b 0%,#448172 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#444a7b', endColorstr='#448172',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+#background-layer2 {
+  position: fixed;
+  width: 120%;
+  height: 117%;
+  left: -$blur_amount;
+  top: -$blur_amount;
+  z-index: -1;
+
+  background-image: url(placeholder.jpg);
+  background-position: left -50px top -50px;
+  filter: blur($blur_amount) opacity(0.9);
+}
+
+#editing-area-layer, #windows-layer {
+  position: absolute;
+  width: 100%;
+  height: 97%;
+}
+
+#windows-layer {
+  z-index: 2;
+}
+
+.window {
+  background-color: $secondary;
+  position: fixed;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  margin-top: 0px;
+  z-index: 1; // keep above image
+  // width: 100px;
+  // height: 100px;
+
+  @include standard_shadow;
+}
+
+$window_bar_height: 25px;
+
+.window-bar {
+  top: -$window_bar_height;
+  width: 100%;
+  height: $window_bar_height;
+  content: " ";
+  background-color: $primary;
+}
+
+$x_height: 20px;
+$x_width: 1.5px;
+
+.close {
+  width: 25px;
+  height: 25px;
+
+  background-color: $primary;
+  position: absolute;
+}
+
+.close:hover {
+  cursor: pointer;
+}
+
+.close:before, .close:after {
+  background-color: $accent_blue;
+  position: absolute;
+  content: ' ';
+  height: $x_height;
+  width: $x_width;
+  left: 12px;
+  top: 3px;
+  transition-duration: 0.5s;
+  transition-property: transform;
+}
+
+.close:before {
+  transform: rotate(45deg);
+}
+
+.close:after {
+  transform: rotate(-45deg);
+}
+
+.close:hover:before {
+  transform: rotate(225deg);
+}
+
+.close:hover:after {
+  transform: rotate(-225deg);
+}
+
+#tools {
+  left: 50px;
+  top: 20%;
+
+  img {
+    width: 40px;
+    display: block;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+  }
+
+  img:hover {
+    background-color: $primary;
+  }
+
+  #grab-icon {
+    padding-top: 20px;
+  }
+
+  #eyedropper-icon {
+    padding-bottom: 20px;
+  }
+}
+
+
+// Container for jQuery containment
+#wheel-container {
+  // display: flex;
+  padding: 15px;
+  border-radius: 500px;
+}
+
+#wheel-container img {
+  width: 200px;
+}
+
+#color-cursor {
+  width:  8px;
+  height: 8px;
+  border-radius: 100px;
+  border: 1.5px solid $primary;
+  position: absolute;
+}
+
+#colors:visited {
+  bottom: auto;
+}
+
+#selected-colors {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+#selected-colors * {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 25px;
+
+  transition-duration: 0.25s;
+  transition-property: transform;
+  
+  &:hover {
+    transform: scaleY(1.5) translate(0, -17%);
+  }
+}
+
+#selected-primary {
+  background-color: $accent_blue;
+}
+
+#selected-secondary {
+  background-color: white;
+}
+
+#main-image {
+  display: block;
+  width: 800px;
+  margin: 0 auto;
+  vertical-align: middle;
+  z-index: 0;
+
+}

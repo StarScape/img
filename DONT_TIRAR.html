@@ -1,0 +1,26 @@
+      <menu class='window' id='tools'>
+        <div class='window-bar'><div class='close'></div></div>
+
+        <%= image_tag 'grab.png', id:'grab-icon' %>
+        <%= image_tag 'select.png' %>
+        <%= image_tag 'eraser.png' %>
+        <%= image_tag 'paint.png' %>
+        <%= image_tag 'eyedropper.png', id:'eyedropper-icon' %>
+      </menu>
+
+      <menu class='window' id='colors'>
+        <div class='window-bar'><div class='close'></div></div>
+        
+        <!-- Container for jQuery containment -->
+        <div id='wheel-container'>
+          <%= image_tag 'color_wheel.png', style: "display: none;" %>
+          <canvas id='color-wheel' width=230 height=230></canvas>
+
+          <div id='color-cursor'></div>
+        </div>
+        
+        <div id='selected-colors'>
+          <div id='selected-primary'></div>
+          <div id='selected-secondary'></div>
+        </div>
+      </menu>

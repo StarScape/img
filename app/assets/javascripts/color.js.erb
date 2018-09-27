@@ -1,0 +1,69 @@
+// $(document).ready(() => {
+
+//   // These must be set with JS due to a weird bug with Jquery UI
+//   // const colorsX = $("#editing-area").width() - 300;
+//   // const colorsY = $("#editing-area").height() - 350;
+//   $("#colors").offset({
+//     left: $("#editing-area").width() - 300,
+//     top: $("#editing-area").height() - 400
+//   });
+
+//   const cursorX = $("#wheel-container").offset().left
+//                   + $("#wheel-container").width() / 2
+//                   + $("#color-cursor").width();
+//   const cursorY = $("#wheel-container").offset().top
+//                   + $("#wheel-container").height() / 2
+//                   + $("#color-cursor").height();
+
+//   $("#color-cursor").offset({
+//     left: cursorX,
+//     top: cursorY
+//   });
+
+//   // Draw canvas
+//   const canvas = document.getElementById('color-wheel');
+//   const ctx = canvas.getContext('2d');
+//   const wheelImg = document.querySelector('#wheel-container img');
+//   const padding = 15;
+//   ctx.drawImage(wheelImg, padding, padding, 200, 200);
+
+//   // Updates the selected color according to cursor position
+//   function updateColor() {
+//     // Canvas coordinates of the cursor's position
+//     let selectedX = $("#color-cursor").offset().left - $("#color-wheel").offset().left + padding/2;
+//     let selectedY = $("#color-cursor").offset().top - $("#color-wheel").offset().top + padding/2;
+
+//     let imgData = ctx.getImageData(selectedX, selectedY, 1, 1).data;
+//     let colorStr = `rgb(${imgData[0]}, ${imgData[1]}, ${imgData[2]})`;
+//     $("#selected-primary").css('background-color', colorStr);
+//   }
+
+//   // Make the cursor draggable, set bounds
+//   $("#color-cursor").draggable({
+//     drag: function(e, ui) {
+//       let x = ui.offset.left;
+//       let y = ui.offset.top;
+
+//       let dist = Math.sqrt(Math.pow(x - cursorX, 2) + Math.pow(y - cursorY, 2));
+
+//       updateColor();      
+
+//       // If the mouse is outside the circle, put the cursor on the edge
+//       if (dist > 98) {
+//         let angle = Math.atan2(y - cursorY, x - cursorX);
+//         let xForAngle = Math.cos(angle) * 98;
+//         let yForAngle = Math.sin(angle) * 98;
+
+//         // Welcome to the world of convoluted DOM bullshit.
+//         // Yes, I know you think you know how this works. You don't. DON'T TOUCH.
+//         let outerX = xForAngle + $("#wheel-container").outerWidth()/2 - $("#color-cursor").width();
+//         let outerY = yForAngle + $("#wheel-container").outerHeight()/2 - $("#color-cursor").height() + $(".window-bar").height();
+
+
+//         ui.position.left = outerX;
+//         ui.position.top = outerY;
+//       }
+//     }
+//   });
+
+// });

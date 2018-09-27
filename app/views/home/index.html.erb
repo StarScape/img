@@ -1,0 +1,64 @@
+<% content_for :head do %>
+  
+  <title>IMG</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+
+<% end %>
+<% content_for :body do %>
+  
+  <!-- Vue templates -->
+  <template id='window-template'>
+    <div class='window' v-bind:style='styleObj' v-if='open'>
+      <div class='window-bar' v-on:mousedown='click'>
+        <div class='close' v-on:click='close'></div>
+      </div>
+      
+      <slot></slot>
+    
+    </div>
+  </template>
+
+  <!-- Vue.js app container -->
+  <div  id='vue-app' 
+        v-on:mousemove='dragWindows'
+        v-on:mouseup='unclickWindows'>
+
+    <!-- Top menu bar -->
+    <menu id='menu-bar'>
+      <ul>
+        <a>File</a>
+        <a>Edit</a>
+        <a>Layers</a>
+        <a>Colors</a>
+        <a>Help</a>
+      </ul>
+    </menu>
+
+    <!-- Our background -->
+    <div id='background-layer1'></div>
+    <div id='background-layer2'></div>
+
+    <!-- Editing Area -->
+    <div id='editing-area-layer'>
+      <%= image_tag 'placeholder.jpg', id: 'main-image' %>
+    </div>
+
+    <!-- Windows -->
+    <div id='windows-layer'>
+      <window id='tools' constraint='#windows-layer'>
+        <%= image_tag 'grab.png', id:'grab-icon' %>
+        <%= image_tag 'select.png' %>
+        <%= image_tag 'eraser.png' %>
+        <%= image_tag 'paint.png' %>
+        <%= image_tag 'eyedropper.png', id:'eyedropper-icon' %>
+      </window>
+
+      <!-- <window id='colors' constraint='#windows-layer'> -->
+
+      <!-- </window> -->
+    </div>
+  </div>
+
+<% end %>
