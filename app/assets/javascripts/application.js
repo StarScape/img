@@ -14,6 +14,8 @@
 //= require turbolinks
 //= require jquery3
 //= require ./lib/vue
+//= require ./lib/Vector
 //= require ./window
+//= require ./wheel
 //= require ./vue_app
 //= require ./home

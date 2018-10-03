@@ -12,7 +12,9 @@ $(document).ready(() => {
     methods: {
       dragWindows(e) {
         this.$children.forEach((c) => {
-          c.drag(e, this.lastMouseX, this.lastMouseY);
+          if (c.drag != null) {
+            c.drag(e, this.lastMouseX, this.lastMouseY);
+          }
         });
 
         this.lastMouseX = e.pageX;
@@ -21,7 +23,9 @@ $(document).ready(() => {
 
       unclickWindows(e) {
         this.$children.forEach(function(c) {
-          c.unclick(e);
+          if (c.unclick != null) {
+            c.unclick(e);
+          }
         });
       }
     }

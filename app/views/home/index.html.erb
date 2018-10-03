@@ -20,13 +20,22 @@
     </div>
   </template>
 
+  <template id='wheel-template'>
+    <div>
+      <%= image_tag 'color_wheel.png', style: "display: none;" %>
+      <canvas :width="width" :height="height" style='border: 1px solid black'
+              v-on:mousedown='click'
+              v-on:mousemove='drag'></canvas>
+    </div>
+  </template>
+
   <!-- Vue.js app container -->
   <div  id='vue-app' 
         v-on:mousemove='dragWindows'
         v-on:mouseup='unclickWindows'>
 
     <!-- Top menu bar -->
-    <menu id='menu-bar'>
+    <menu id='menu-bar' v-if='false'>
       <ul>
         <a>File</a>
         <a>Edit</a>
@@ -37,16 +46,16 @@
     </menu>
 
     <!-- Our background -->
-    <div id='background-layer1'></div>
-    <div id='background-layer2'></div>
+    <div id='background-layer1' v-if='false'></div>
+    <div id='background-layer2' v-if='false'></div>
 
     <!-- Editing Area -->
-    <div id='editing-area-layer'>
+    <div id='editing-area-layer' v-if='false'>
       <%= image_tag 'placeholder.jpg', id: 'main-image' %>
     </div>
 
     <!-- Windows -->
-    <div id='windows-layer'>
+    <div id='windows-layer' v-if='false'>
       <window id='tools' constraint='#windows-layer'>
         <%= image_tag 'grab.png', id:'grab-icon' %>
         <%= image_tag 'select.png' %>
@@ -59,6 +68,10 @@
 
       <!-- </window> -->
     </div>
+
+    <color-wheel width=200 height=200>
+      
+    </color-wheel>
   </div>
 
 <% end %>
