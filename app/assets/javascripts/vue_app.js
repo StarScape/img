@@ -2,7 +2,7 @@ $(document).ready(() => {
   
   Vue.config.productionTip = false;
 
-  var vm = new Vue({
+  window.vm = new Vue({
     el: "#vue-app",
     data: {
       lastMouseX: 0,

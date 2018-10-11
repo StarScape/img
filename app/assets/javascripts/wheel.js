@@ -3,13 +3,17 @@ $(document).ready(() => {
 Vue.component('color-wheel', {
   template: '#wheel-template',
   props: ['width', 'height'],
+  
   data: function() {
     return {
       mouseDown: false,
       cursorX: 0,
-      cursorY: 0
+      cursorY: 0,
+      primaryColor: "rgb(44,146,185)",
+      secondaryColor: "rgb(255, 255, 255)"
     }
   },
+
   mounted: function() {
     this.img = this.$el.querySelector('img');
     this.canvas = this.$el.querySelector('canvas');
@@ -18,6 +22,8 @@ Vue.component('color-wheel', {
     this.ctx = this.canvas.getContext('2d');
     this.cursorX = this.canvas.width/2;
     this.cursorY = this.canvas.height/2;
+
+    this.colorSelector = this.$children[0];
 
     this.draw();
   },
@@ -42,8 +48,9 @@ Vue.component('color-wheel', {
 
     // Returns true if click is inside the color wheel
     _insideWheel: function(e) {
-      var mx = e.pageX - this.$el.offsetLeft;
-      var my = e.pageY - this.$el.offsetTop;
+      var mx = e.pageX - $(this.$el).offset().left;
+      var my = e.pageY - $(this.$el).offset().top;
+      
 
       var centerX = this.canvas.width/2;
       var centerY = this.canvas.height/2;
@@ -52,9 +59,18 @@ Vue.component('color-wheel', {
       return dist < (this.width/2);
     },
 
+    // Returns the color at cursor position 
+    updateColor: function(e) {
+  
+      let imgData = this.ctx.getImageData(this.cursorX, this.cursorY, 1, 1).data;
+      let colorStr = `rgb(${imgData[0]}, ${imgData[1]}, ${imgData[2]})`;
+      this.colorSelector.set(colorStr);
+    },
+
+    // Update cursor position
     updateCursor: function(e) {
-      var mx = e.pageX - this.$el.offsetLeft;
-      var my = e.pageY - this.$el.offsetTop;
+      var mx = e.pageX - $(this.$el).offset().left;
+      var my = e.pageY - $(this.$el).offset().top;
 
       if (this._insideWheel(e)) {
         this.cursorX = mx;
@@ -71,8 +87,10 @@ Vue.component('color-wheel', {
       }
 
       this.draw();
+      this.updateColor();
     },
 
+    // Draw the canvas
     draw: function() {
       this.ctx.clearRect(0, 0, this.width, this.height);1
       this.ctx.drawImage(this.img, 0, 0, this.width, this.height);

@@ -186,15 +186,10 @@ $x_width: 1.5px;
 }
 
 
-// Container for jQuery containment
-#wheel-container {
-  // display: flex;
-  padding: 15px;
-  border-radius: 500px;
-}
-
-#wheel-container img {
-  width: 200px;
+#colors {
+  position: absolute;
+  left: 85%;
+  top: 35%;
 }
 
 #color-cursor {
@@ -205,21 +200,18 @@ $x_width: 1.5px;
   position: absolute;
 }
 
-#colors:visited {
-  bottom: auto;
-}
-
-#selected-colors {
+.selected-colors {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
 
-#selected-colors * {
+.selected-colors * {
   display: flex;
   flex-direction: column;
   width: 50%;
   height: 25px;
+  margin-top: 10px;
 
   transition-duration: 0.25s;
   transition-property: transform;
@@ -229,12 +221,8 @@ $x_width: 1.5px;
   }
 }
 
-#selected-primary {
-  background-color: $accent_blue;
-}
-
-#selected-secondary {
-  background-color: white;
+.selected-color {
+  // transform: scaleY(1.1) translate(0, -5%);
 }
 
 #main-image {
@@ -244,4 +232,8 @@ $x_width: 1.5px;
   vertical-align: middle;
   z-index: 0;
 
+}
+
+#foobar:active {
+  color: red;
 }

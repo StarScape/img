@@ -21,11 +21,27 @@
   </template>
 
   <template id='wheel-template'>
-    <div>
+    <div class='color-wheel'>
       <%= image_tag 'color_wheel.png', style: "display: none;" %>
-      <canvas :width="width" :height="height" style='border: 1px solid black'
+      <canvas :width="width" :height="height"
               v-on:mousedown='click'
-              v-on:mousemove='drag'></canvas>
+              v-on:mousemove='drag'>
+      </canvas>
+      <slot></slot>  
+    </div>
+  </template>
+
+  <template id='color-selector-template'>
+    <div class='selected-colors'>
+      <a  v-bind:class="{ 'selected-color': primarySelected }"
+          v-bind:style='{ backgroundColor: primaryColor }'
+          v-on:click='clickPrimary'>
+      </a>
+
+      <a  v-bind:class="{ 'selected-color': secondarySelected }"
+          v-bind:style='{ backgroundColor: secondaryColor }'
+          v-on:click='clickSecondary'>
+      </a>
     </div>
   </template>
 
@@ -35,7 +51,7 @@
         v-on:mouseup='unclickWindows'>
 
     <!-- Top menu bar -->
-    <menu id='menu-bar' v-if='false'>
+    <menu id='menu-bar'>
       <ul>
         <a>File</a>
         <a>Edit</a>
@@ -46,16 +62,16 @@
     </menu>
 
     <!-- Our background -->
-    <div id='background-layer1' v-if='false'></div>
-    <div id='background-layer2' v-if='false'></div>
+    <div id='background-layer1'></div>
+    <div id='background-layer2'></div>
 
     <!-- Editing Area -->
-    <div id='editing-area-layer' v-if='false'>
+    <div id='editing-area-layer'>
       <%= image_tag 'placeholder.jpg', id: 'main-image' %>
     </div>
 
     <!-- Windows -->
-    <div id='windows-layer' v-if='false'>
+    <div id='windows-layer'>
       <window id='tools' constraint='#windows-layer'>
         <%= image_tag 'grab.png', id:'grab-icon' %>
         <%= image_tag 'select.png' %>
@@ -64,14 +80,13 @@
         <%= image_tag 'eyedropper.png', id:'eyedropper-icon' %>
       </window>
 
-      <!-- <window id='colors' constraint='#windows-layer'> -->
-
-      <!-- </window> -->
+      <window id='colors' constraint='#windows-layer'>
+        <color-wheel width=200 height=200>
+          <color-selector></color-selector>
+        </color-wheel>
+      </window>
     </div>
 
-    <color-wheel width=200 height=200>
-      
-    </color-wheel>
   </div>
 
 <% end %>

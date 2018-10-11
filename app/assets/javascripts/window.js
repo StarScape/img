@@ -9,7 +9,8 @@ Vue.component('window', {
 
       styleObj: {
         left: "",
-        top: ""
+        top: "",
+        right: ""
       }
     }
   },
@@ -21,6 +22,14 @@ Vue.component('window', {
     
     unclick: function(e) {
       this.mouseDown = false;
+
+      // Unclick all children too
+      this.$children.forEach(function(c) {
+        if (c.unclick != null) {
+          c.unclick(e);
+        }
+      });
+
     },
 
     drag: function(e, lastX, lastY) {
@@ -41,6 +50,13 @@ Vue.component('window', {
           this.styleObj.top = y + "px";
         }
       }
+
+      // Drag all children too
+      this.$children.forEach((c) => {
+        if (c.drag != null) {
+          c.drag(e);
+        }
+      });
     },
 
     close: function() {

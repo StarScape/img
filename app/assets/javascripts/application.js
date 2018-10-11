@@ -16,6 +16,7 @@
 //= require ./lib/vue
 //= require ./lib/Vector
 //= require ./window
+//= require ./colorSelector
 //= require ./wheel
 //= require ./vue_app
 //= require ./home
