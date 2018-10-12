@@ -1,10 +1,21 @@
 Icon idea: three teardrop shapes in a triangle, red, green, and blue
 
-TODO: 
+# Animation Ideas:
+- Slide down menus
+- Tools shrink on hover
+- Windows fade when closed
+
+# Style Ideas:
+- Switch dropdown menu color to black (match with tool window)?
+
+# Todo (most important last):
 - Fix editing area height
-- Drop downs
-- Fix color cursor
-- Background?
+- Menu item icons
+- Reopen windows
+- Switch to canvas for image
 - Zoom
-- Selected color click
-- Color wheel component
+- Menu closes when clicked outside
+- Tool click and cursor
+- Separate Vue files
+- Style cleanup (shadow, color wheel margins)
+- Menu bar item stays clicked

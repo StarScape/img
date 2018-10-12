@@ -22,6 +22,12 @@ body {
 $bar_padding_hor: 0px;
 $bar_padding_vert: 3px;
 
+@mixin menu_item_selected() {
+  cursor: pointer;
+  background-color: $secondary;
+  color: $accent_blue;
+}
+
 #menu-bar {
   background-color: $primary;
   padding-right: $bar_padding_hor;  
@@ -48,10 +54,12 @@ $bar_padding_vert: 3px;
     height: 100%;
   }
 
-  li a:hover {
-    cursor: pointer;
-    background-color: $secondary;
-    color: $accent_blue;
+  .menu-item-selected {
+    @include menu-item-selected;
+  }
+
+  .menu-item:hover {
+    @include menu_item_selected;
   }
   
   .dropdown {
@@ -79,9 +87,10 @@ $bar_padding_vert: 3px;
   }
 
   .dropdown a:hover {
-    background-color: $secondary;
+    @include menu_item_selected;
   }
 }
+
 
 
 $blur_amount: 50px;

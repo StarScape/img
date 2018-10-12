@@ -12,9 +12,6 @@ Vue.component('color-selector', {
     }
   },
 
-  mounted: function() {
-  },
-
   methods: {
     clickPrimary: function(e) {
       if (!this.primarySelected) {

@@ -47,7 +47,10 @@
 
   <template id='item-template'>
     <li>
-      <a class='menu-item' v-on:click='toggle'>{{ text }}</a>
+      <a  v-bind:class="{ 'menu-item': true, 'menu-item-selected': visible }"
+          v-on:click='toggle'>
+        {{ text }}
+      </a>
       <ul class='dropdown' v-if='visible'>
         <slot></slot>
       </ul>
