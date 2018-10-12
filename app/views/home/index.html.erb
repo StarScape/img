@@ -33,12 +33,12 @@
 
   <template id='color-selector-template'>
     <div class='selected-colors'>
-      <a  v-bind:class="{ 'selected-color': primarySelected }"
+      <a  v-bind:class="{ 'selected-color': primarySelected, 'primary-color': true }"
           v-bind:style='{ backgroundColor: primaryColor }'
           v-on:click='clickPrimary'>
       </a>
 
-      <a  v-bind:class="{ 'selected-color': secondarySelected }"
+      <a  v-bind:class="{ 'selected-color': secondarySelected, 'secondary-color': true }"
           v-bind:style='{ backgroundColor: secondaryColor }'
           v-on:click='clickSecondary'>
       </a>

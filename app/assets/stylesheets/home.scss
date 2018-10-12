@@ -68,11 +68,11 @@ $bar_padding_vert: 3px;
 
     font-size: 90%;
     line-height: 1.2em;
-    // padding-top: 5px;
-    // padding-bottom: 5px;
     min-width: 150px;
     left: 0;
     top: 21px;
+
+    @include standard_shadow;
 
     // The hover won't work without this here, tf if I know why
     z-index: 100;
@@ -230,7 +230,7 @@ $x_width: 1.5px;
 #colors {
   position: absolute;
   left: 85%;
-  top: 35%;
+  top: 40%;
 }
 
 #color-cursor {
@@ -239,6 +239,10 @@ $x_width: 1.5px;
   border-radius: 100px;
   border: 1.5px solid $primary;
   position: absolute;
+}
+
+.color-wheel canvas{
+  margin: 5px;
 }
 
 .selected-colors {
@@ -252,19 +256,25 @@ $x_width: 1.5px;
   flex-direction: column;
   width: 50%;
   height: 25px;
-  margin-top: 10px;
+  margin-top: 5px;
 
   transition-duration: 0.25s;
   transition-property: transform;
+  transition-duration: 0.2s;
   
   &:hover {
-    transform: scaleY(1.5) translate(0, -17%);
     cursor: pointer;
+    transform: scaleY(1.5) translate(0, -14%);
+
   }
 }
 
-.selected-color {
-  // transform: scaleY(1.1) translate(0, -5%);
+.primary-color:hover {
+  transform: scaleY(1.028) scaleX(1.2) translate(8.5%, 1.55%);
+}
+
+.secondary-color:hover {
+  transform: scaleY(1.028) scaleX(1.2) translate(-8.5%, 1.55%);
 }
 
 #main-image {

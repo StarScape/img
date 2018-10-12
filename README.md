@@ -15,7 +15,7 @@ Icon idea: three teardrop shapes in a triangle, red, green, and blue
 - Switch to canvas for image
 - Zoom
 - Menu closes when clicked outside
+- Color wheel snap cursor when switch colors
 - Tool click and cursor
 - Separate Vue files
 - Style cleanup (shadow, color wheel margins)
-- Menu bar item stays clicked
