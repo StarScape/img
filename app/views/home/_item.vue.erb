@@ -1,0 +1,11 @@
+<template id='item-template'>
+  <li>
+    <a  v-bind:class="{ 'menu-item': true, 'menu-item-selected': visible }"
+        v-on:click='toggle'>
+      {{ text }}
+    </a>
+    <ul class='dropdown' v-if='visible'>
+      <slot></slot>
+    </ul>
+  </li>
+</template>

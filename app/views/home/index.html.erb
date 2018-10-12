@@ -8,62 +8,12 @@
 <% end %>
 <% content_for :body do %>
   
-  <!-- Vue templates -->
-  <template id='window-template'>
-    <div class='window' v-bind:style='styleObj' v-if='open'>
-      <div class='window-bar' v-on:mousedown='click'>
-        <div class='close' v-on:click='close'></div>
-      </div>
-      
-      <slot></slot>
-    
-    </div>
-  </template>
-
-  <template id='wheel-template'>
-    <div class='color-wheel'>
-      <%= image_tag 'color_wheel.png', style: "display: none;" %>
-      <canvas :width="width" :height="height"
-              v-on:mousedown='click'
-              v-on:mousemove='drag'>
-      </canvas>
-      <slot></slot>  
-    </div>
-  </template>
-
-  <template id='color-selector-template'>
-    <div class='selected-colors'>
-      <a  v-bind:class="{ 'selected-color': primarySelected, 'primary-color': true }"
-          v-bind:style='{ backgroundColor: primaryColor }'
-          v-on:click='clickPrimary'>
-      </a>
-
-      <a  v-bind:class="{ 'selected-color': secondarySelected, 'secondary-color': true }"
-          v-bind:style='{ backgroundColor: secondaryColor }'
-          v-on:click='clickSecondary'>
-      </a>
-    </div>
-  </template>
-
-  <template id='item-template'>
-    <li>
-      <a  v-bind:class="{ 'menu-item': true, 'menu-item-selected': visible }"
-          v-on:click='toggle'>
-        {{ text }}
-      </a>
-      <ul class='dropdown' v-if='visible'>
-        <slot></slot>
-      </ul>
-    </li>
-  </template>
-
-  <template id='menu-bar-template'>
-    <menu id='menu-bar'>
-      <ul>
-        <slot></slot>
-      </ul>
-    </menu>
-  </template>
+  <!-- Import Vue templates -->
+  <%= render :partial => 'window.vue.erb' %>
+  <%= render :partial => 'wheel.vue.erb' %>
+  <%= render :partial => 'color_selector.vue.erb' %>
+  <%= render :partial => 'item.vue.erb' %>
+  <%= render :partial => 'menu_bar.vue.erb' %>
 
   <!-- Vue.js app container -->
   <div  id='vue-app' 

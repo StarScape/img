@@ -1,0 +1,10 @@
+<template id='wheel-template'>
+  <div class='color-wheel'>
+    <%= image_tag 'color_wheel.png', style: "display: none;" %>
+    <canvas :width="width" :height="height"
+            v-on:mousedown='click'
+            v-on:mousemove='drag'>
+    </canvas>
+    <slot></slot>  
+  </div>
+</template>

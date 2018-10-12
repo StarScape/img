@@ -1,0 +1,10 @@
+<template id='window-template'>
+  <div class='window' v-bind:style='styleObj' v-if='open'>
+    <div class='window-bar' v-on:mousedown='click'>
+      <div class='close' v-on:click='close'></div>
+    </div>
+    
+    <slot></slot>
+  
+  </div>
+</template>
