@@ -45,21 +45,65 @@
     </div>
   </template>
 
+  <template id='item-template'>
+    <li>
+      <a class='menu-item' v-on:click='toggle'>{{ text }}</a>
+      <ul class='dropdown' v-if='visible'>
+        <slot></slot>
+      </ul>
+    </li>
+  </template>
+
+  <template id='menu-bar-template'>
+    <menu id='menu-bar'>
+      <ul>
+        <slot></slot>
+      </ul>
+    </menu>
+  </template>
+
   <!-- Vue.js app container -->
   <div  id='vue-app' 
         v-on:mousemove='dragWindows'
         v-on:mouseup='unclickWindows'>
 
     <!-- Top menu bar -->
-    <menu id='menu-bar'>
-      <ul>
-        <a>File</a>
-        <a>Edit</a>
-        <a>Layers</a>
-        <a>Colors</a>
-        <a>Help</a>
-      </ul>
-    </menu>
+    <menu-bar>
+      <item text='File'>
+        <a>Open</a>
+        <a>New</a>
+        <a>Save</a>
+        <a>Save As...</a>
+      </item>
+      <item text='Edit'>
+        <a>Undo</a>
+        <a>Redo</a>
+        <a>Copy</a>
+        <a>Cut</a>
+        <a>Paste</a>
+        <a>Duplicate</a>
+      </item>
+
+      <item text='Layers'>
+        <a>New Layer</a>
+        <a>Edit Layer</a>
+        <a>Move Layer Up</a>
+        <a>Move Layer Down</a>
+        <a>Layers Menu</a>
+      </item>
+
+      <item text='Colors'>
+        <a>Hue/Saturation</a>
+        <a>Brightness/Contrast</a>
+        <a>Black and White</a>
+        <a>Invert</a>
+      </item>
+
+      <item text='Help'>
+        <a>View Docs</a>
+      </item>
+
+    </menu-bar>
 
     <!-- Our background -->
     <div id='background-layer1'></div>

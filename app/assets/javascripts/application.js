@@ -18,5 +18,7 @@
 //= require ./window
 //= require ./colorSelector
 //= require ./wheel
+//= require ./item
+//= require ./menuBar
 //= require ./vue_app
 //= require ./home

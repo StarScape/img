@@ -26,18 +26,21 @@ $bar_padding_vert: 3px;
   background-color: $primary;
   padding-right: $bar_padding_hor;  
   padding-left: $bar_padding_hor;
-
   padding-bottom: $bar_padding_vert;
   padding-top: $bar_padding_vert;
 
   @include standard_shadow(0px);
 
   $bar_word_spacing: 20px;
+  color: #e6e6e6;
+  font-family: lato, sans-serif;
 
-  a {
-    color: #e6e6e6;
-    font-family: lato, sans-serif;
-  
+  li {
+    position: relative;
+    display: inline;
+  }
+
+  .menu-item {
     padding-right: $bar_word_spacing;
     padding-left: $bar_word_spacing;
     padding-bottom: $bar_padding_vert;
@@ -45,12 +48,41 @@ $bar_padding_vert: 3px;
     height: 100%;
   }
 
-  a:hover {
+  li a:hover {
     cursor: pointer;
     background-color: $secondary;
     color: $accent_blue;
   }
+  
+  .dropdown {
+    position: absolute;
+    background-color: $primary;
+
+    font-size: 90%;
+    line-height: 1.2em;
+    // padding-top: 5px;
+    // padding-bottom: 5px;
+    min-width: 150px;
+    left: 0;
+    top: 21px;
+
+    // The hover won't work without this here, tf if I know why
+    z-index: 100;
+  }
+
+  .dropdown a {
+    display: block;
+    padding-right: $bar_word_spacing;
+    padding-left: $bar_word_spacing;
+    padding-bottom: $bar_padding_vert;
+    padding-top: $bar_padding_vert;
+  }
+
+  .dropdown a:hover {
+    background-color: $secondary;
+  }
 }
+
 
 $blur_amount: 50px;
 
@@ -218,6 +250,7 @@ $x_width: 1.5px;
   
   &:hover {
     transform: scaleY(1.5) translate(0, -17%);
+    cursor: pointer;
   }
 }
 
@@ -232,8 +265,4 @@ $x_width: 1.5px;
   vertical-align: middle;
   z-index: 0;
 
-}
-
-#foobar:active {
-  color: red;
 }

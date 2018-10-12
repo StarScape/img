@@ -1,0 +1,12 @@
+  <template id='menu-bar-template'>
+    <span>
+      <a v-on:click='toggle'><slot></slot></a>
+      
+      <ul class='dropdown' >
+        <a>Foo</a>
+        <a>Bar</a>
+        <a>Bizz</a>
+        <a>Buzz</a>
+      </ul>
+    </span>
+  </template>
