@@ -22,3 +22,4 @@
 //= require ./menuBar
 //= require ./vue_app
 //= require ./home
+//= require_tree .

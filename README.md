@@ -1,11 +1,16 @@
-Icon idea: three teardrop shapes in a triangle, red, green, and blue
+An image editor in Javascript. WIP.
 
-# Animation Ideas:
+![screencap](./screenshot.png "Screenshot")
+
+
+# Ideas: 
+## Icon idea: three teardrop shapes in a triangle, red, green, and blue
+## Animation Ideas:
 - Slide down menus
 - Tools shrink on hover
 - Windows fade when closed
 
-# Style Ideas:
+## Style Ideas:
 - Switch dropdown menu color to black (match with tool window)?
 
 # Todo (most important last):
