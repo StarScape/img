@@ -2,7 +2,6 @@ An image editor in Javascript. WIP.
 
 ![screencap](./screenshot.png "Screenshot")
 
-
 # Ideas: 
 ## Icon idea: three teardrop shapes in a triangle, red, green, and blue
 ## Animation Ideas:
